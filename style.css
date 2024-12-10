@@ -15,7 +15,6 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    overflow-x: hidden;
     position: relative;
 }
 
@@ -24,6 +23,7 @@ body > div {
     flex-direction: column;
     justify-content: space-between;
     height: 100dvh;
+    overflow-x: hidden;    
 }
 
 ::-webkit-scrollbar {
@@ -47,6 +47,7 @@ header {
 }
 
 nav {
+    width: 100vw;
     display: flex;
     justify-content: space-evenly;
     text-transform: uppercase;
@@ -127,7 +128,7 @@ main {
     background: linear-gradient(300deg, #dc143c41, #1B1C1D, #ef8172);
     background-size: 180% 180%;
     animation: gradient-animation 10s ease infinite;
-    height: 90vh;
+    height: auto;
     display: grid;
     grid-template-columns: 70vw 16vw;
     align-items: start;
@@ -150,14 +151,15 @@ main {
 }
 
 #hero section {
+    position: relative;
     font-weight: 500;
     background-color: transparent;
     gap: 0.1rem;
     display: grid;
-    grid-template-rows: 5fr 1fr 1fr;
+    grid-template-rows: 4fr 1fr 1fr;
     grid-template-columns: 1fr;
     float: left;
-    height: 90vh;
+    height: auto;
     justify-content: space-around;
     align-items: left;
     width: 50vw;
@@ -237,7 +239,10 @@ h2{
     color: whitesmoke;
 }
 main {
+    position: relative;
     margin: 0;
+    z-index: 1;
+    height: auto;
 }
 
 main section {
@@ -495,7 +500,7 @@ iframe {
     color: white;
 }
 
-@media (max-width:640px){
+@media (max-width:590px){
     * {
         margin: 0;
         padding: 0;
@@ -505,6 +510,11 @@ iframe {
         font-size: 0.5rem;
     }
 
+    body > div {
+        margin: 0;
+        padding: 0;
+    }
+
     ::-webkit-scrollbar {
         width: 4px;
         height: 4px;
@@ -512,7 +522,13 @@ iframe {
 
     nav {
         padding: 0.5rem;
-        justify-content: space-around;
+        justify-content: space-evenly;
+    }
+
+    nav span {
+        font-size: 3rem;
+        position: absolute;
+        left: 5%;
     }
 
     nav ul {
@@ -523,28 +539,29 @@ iframe {
     #menu {
         position: absolute;
         top: 35%;
-        right: 65%;
+        left: 12%;
         display: flex;
         flex-direction: column;
         height: 1.2rem;
         overflow: hidden;
-        background-color: black;
+        background-color: transparent;
         box-sizing: content-box;
-    }
-
-    #menu {
         border: none;
+        overflow: hidden;
     }
 
-    #menu a:hover {
-        color: white;
-        border: none;
-    }
-
-    #menu:hover, #menu:active {
+    #menu:active {
         height: 100px;
         width: fit-content;
         box-sizing: content-box;
+        background-color: black;
+        transition: all 500ms ease;
+    }
+
+    #menu a:active {
+        color: white;
+        background-color: black;
+        border: none;
     }
 
     .fa-bars {
@@ -565,19 +582,32 @@ iframe {
         font-size: 2rem;
     }
 
+    #hero {
+        height: auto;
+    }
+
     #hero section {
+        grid-template-rows: 2fr 1fr ;
         width: 100vw;
     }
 
+    #hero span {
+        font-size: 1.5rem;
+    }
+
+    main {
+        height: auto;
+    }
+
     main section {
-        width: 85vw;
-        margin: 1rem;
+        width: 82vw;
+        margin: 0.5rem;
     }
 
     .genre-list{
         gap: 0.5rem;
-        width: 83vw;
-        margin: 0.5rem 1rem !important;
+        width: 80vw;
+        margin: 0.5rem 0.7rem !important;
     }
 
     .item {
@@ -590,6 +620,7 @@ iframe {
         width: 100px;
         height: 150px;
         gap: 0.3rem;
+        visibility: hidden;
     }
 
     .info ul {
@@ -611,6 +642,10 @@ iframe {
 
     footer {
         width: 85vw;
-        padding: 1rem 3rem;
+        padding: 1rem 2rem;
+    }
+
+    footer div:last-child {
+        font-size: 0.3rem;
     }
 }
